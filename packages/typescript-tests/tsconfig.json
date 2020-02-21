@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "ES6",
+		"noEmit": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"noResolve": true,
+		"types": ["realm"]
+	},
+	"include": ["src/**/*.ts"]
+}
