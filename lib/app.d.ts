@@ -20,13 +20,56 @@ declare namespace Realm {
     /**
      * The constructor of MongoDB Realm App.
      */
-    type AppConstructor = new <FF extends FunctionFactory>() => App<FF>;
+    type AppConstructor = new <FF extends FunctionFactory>(
+        id: string,
+        configuration?: Partial<AppConfiguration>,
+    ) => App<FF>;
 
     /**
      * A MongoDB Realm App.
      */
     interface App<FF extends FunctionFactory = FunctionFactory> {
+        /**
+         * The id of this Realm app.
+         */
+        id: string;
+
+        /**
+         * Use this to call functions defined on the MongoDB Realm server.
+         */
         functions: FF;
+
+        /**
+         * Login a user using a specific credential
+         * @param credential the credential to use when logging in
+         */
+        login(credential: Credential): Promise<Realm.User>;
+    }
+
+    interface AppConfiguration {
+        baseUrl: string;
+    }
+
+    interface Credential {
+        /**
+         * Name of the authentication provider.
+         */
+        readonly providerName: string;
+    
+        /**
+         * Type of the authentication provider.
+         */
+        readonly providerType: string;
+    
+        /**
+         * The contents of this credential as they will be passed to the server.
+         */
+        readonly material: { [key: string]: string };
+    
+        // TODO: Add providerCapabilities?
+    }
+
+    interface User {
     }
 
     /**
@@ -38,6 +81,17 @@ declare namespace Realm {
      * A collection of functions as defined on the MongoDB Server.
      */
     interface FunctionFactory {
+        /**
+         * Call a remote MongoDB Realm function by it's name.
+         * Consider using `functions[name]()` instead of calling this method.
+         * @param name Name of the function
+         * @param args Arguments passed to the function
+         */
+        callFunction(name: string, ...args: any[]): Promise<any>;
+
+        /**
+         * All the functions are accessable as members on this instance.
+         */
         [name: string]: RealmFunction<any, any[]>;
     }
 }

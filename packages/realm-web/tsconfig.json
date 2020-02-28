@@ -4,8 +4,8 @@
 		"target": "es5",
 		"noEmit": true,
 		"forceConsistentCasingInFileNames": true,
-		"types": ["mocha", "chai"],
-		"lib": ["ES5", "DOM"]
+		"types": ["mocha", "chai", "node"],
+		"lib": ["ES5", "ES2015.Promise", "ES2015.Proxy", "ES2015.Reflect", "DOM"]
 	},
 	"include": ["src/**/*.ts", "types/*.d.ts"]
 }

@@ -29,8 +29,10 @@
   "devDependencies": {
     "@types/chai": "^4.2.9",
     "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.6",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "node-fetch": "^2.6.0",
     "ts-mocha": "^6.0.0",
     "typescript": "^3.4.3"
   }
