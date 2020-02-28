@@ -2,12 +2,10 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"target": "es5",
-		"module": "ES6",
 		"noEmit": true,
-		"strict": true,
-		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"types": ["realm"]
+		"types": ["mocha", "chai"],
+		"lib": ["ES5", "DOM"]
 	},
-	"include": ["src/**/*.ts"]
+	"include": ["src/**/*.ts", "types/*.d.ts"]
 }

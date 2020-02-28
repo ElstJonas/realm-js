@@ -4,7 +4,7 @@
   "description": "Integration testing use of the TypeScript types exported by the root package",
   "private": true,
   "scripts": {
-    "test": "tsc -p . && tslint -p ."
+    "test": "../../node_modules/.bin/tslint -p . && ../../node_modules/.bin/tsc -p ."
   },
   "dependencies": {
     "realm": "file:../..",
